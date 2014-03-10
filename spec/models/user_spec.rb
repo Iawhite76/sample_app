@@ -16,6 +16,11 @@ describe User do
 
     it { should be_valid }
 
+    describe "remember token" do
+      before { @user.save }
+      its(:remember_token) { should_not be_blank }
+    end
+
     describe "when password is not present" do
       before do
         @user = User.new(name: "Example User", email: "user@example.com",
